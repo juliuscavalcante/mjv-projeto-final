@@ -1,4 +1,4 @@
-package com.mjv.mjvracingbackend.domain;
+package com.mjv.mjvracingbackend.domain.entities;
 
 import com.mjv.mjvracingbackend.domain.enums.Profile;
 

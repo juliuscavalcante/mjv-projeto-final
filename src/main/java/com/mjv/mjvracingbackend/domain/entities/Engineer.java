@@ -1,4 +1,4 @@
-package com.mjv.mjvracingbackend.domain;
+package com.mjv.mjvracingbackend.domain.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.mjv.mjvracingbackend.domain.enums.Profile;
@@ -8,10 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Mechanic extends Person {
+public class Engineer extends Person {
 
     @Serial
-    private static final long serialVersionUID = -5682011832676031300L;
+    private static final long serialVersionUID = -5836532822531249712L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,10 +19,11 @@ public class Mechanic extends Person {
     private Long id;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "mechanic")
+    @OneToMany(mappedBy = "engineer")
     private List<Request> requests = new ArrayList<>();
 
-    public Mechanic() {
+
+    public Engineer() {
         super();
         addProfile(Profile.USER);
     }

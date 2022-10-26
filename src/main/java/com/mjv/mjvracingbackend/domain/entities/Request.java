@@ -1,4 +1,4 @@
-package com.mjv.mjvracingbackend.domain;
+package com.mjv.mjvracingbackend.domain.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.mjv.mjvracingbackend.domain.enums.Priority;
