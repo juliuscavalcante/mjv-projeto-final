@@ -11,6 +11,7 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
+@Table(name = "requests")
 public class Request implements Serializable {
 
     @Serial
