@@ -13,11 +13,6 @@ public class Engineer extends Person {
     @Serial
     private static final long serialVersionUID = -5836532822531249712L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Long id;
-
     @JsonIgnore
     @OneToMany(mappedBy = "engineer")
     private List<Request> requests = new ArrayList<>();
@@ -25,6 +20,11 @@ public class Engineer extends Person {
 
     public Engineer() {
         super();
+        addProfile(Profile.USER);
+    }
+
+    public Engineer(Long id, String name, String cpf, String email, String password) {
+        super(id, name, cpf, email, password);
         addProfile(Profile.USER);
     }
 

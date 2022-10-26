@@ -47,8 +47,8 @@ public class Request implements Serializable {
         super();
     }
 
-    public Request(Long id, LocalDate openingDate, LocalDate closingDate, Priority priority,
-                   Status status, String title, String notes, Engineer engineer, Mechanic mechanic) {
+    public Request(Long id, Priority priority,Status status, String title,
+                   String notes, Engineer engineer, Mechanic mechanic) {
         this.id = id;
         this.priority = priority;
         this.status = status;

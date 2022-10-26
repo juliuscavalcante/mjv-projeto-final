@@ -11,30 +11,22 @@ public class Driver extends Person {
     @Serial
     private static final long serialVersionUID = 5803130385852025791L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Long id;
-
     protected Integer podiums;
 
     protected Integer grandPrixEntered;
 
     protected Integer worldChampionships;
 
-    protected Integer highestGridPosition;
+    protected Integer victories;
 
     public Driver() {
         super();
         addProfile(Profile.USER);
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+    public Driver(Long id, String name, String cpf, String email, String password) {
+        super(id, name, cpf, email, password);
+        addProfile(Profile.USER);
     }
 
     public Integer getPodiums() {
@@ -62,11 +54,11 @@ public class Driver extends Person {
     }
 
     public Integer getHighestGridPosition() {
-        return highestGridPosition;
+        return victories;
     }
 
     public void setHighestGridPosition(Integer highestGridPosition) {
-        this.highestGridPosition = highestGridPosition;
+        this.victories = highestGridPosition;
     }
 
 

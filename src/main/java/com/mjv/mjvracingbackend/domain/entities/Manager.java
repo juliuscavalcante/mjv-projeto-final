@@ -11,13 +11,13 @@ public class Manager extends Person {
     @Serial
     private static final long serialVersionUID = 5027049144376172678L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Long id;
-
     public Manager() {
         super();
+        addProfile(Profile.ADMIN);
+    }
+
+    public Manager(Long id, String name, String cpf, String email, String password) {
+        super(id, name, cpf, email, password);
         addProfile(Profile.ADMIN);
     }
 }

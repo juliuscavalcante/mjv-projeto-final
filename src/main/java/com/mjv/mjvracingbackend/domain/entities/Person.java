@@ -45,8 +45,6 @@ public abstract class Person implements Serializable {
     @JsonFormat(pattern = "dd/MM/yyyy")
     protected LocalDate birthDate = LocalDate.now();
 
-    protected String nationality;
-
     public Person() {
         super();
         addProfile(Profile.USER);
@@ -58,7 +56,6 @@ public abstract class Person implements Serializable {
         this.cpf = cpf;
         this.email = email;
         this.password = password;
-        this.nationality = nationality;
         addProfile(Profile.USER);
     }
 
@@ -112,14 +109,6 @@ public abstract class Person implements Serializable {
 
     public LocalDate getBirthDate() {
         return birthDate;
-    }
-
-    public String getNationality() {
-        return nationality;
-    }
-
-    public void setNationality(String nationality) {
-        this.nationality = nationality;
     }
 
     public void setBirthDate(LocalDate birthDate) {
