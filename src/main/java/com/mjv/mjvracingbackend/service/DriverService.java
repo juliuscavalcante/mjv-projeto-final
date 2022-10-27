@@ -6,7 +6,7 @@ import com.mjv.mjvracingbackend.repository.PersonRepository;
 import com.mjv.mjvracingbackend.service.exception.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -17,6 +17,10 @@ public class DriverService {
 
     @Autowired
     private PersonRepository personRepository;
+
+    public List<Driver> findAll() {
+        return driverRepository.findAll();
+    }
 
     public Driver findById(Long id) {
         Optional<Driver> driverOptional = driverRepository.findById(id);
