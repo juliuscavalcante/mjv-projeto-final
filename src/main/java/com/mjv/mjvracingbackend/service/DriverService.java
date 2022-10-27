@@ -33,6 +33,7 @@ public class DriverService {
 
     public Driver create(DriverDTO driverDTO) {
         driverDTO.setId(null);
+        validateCpfAndEmail(driverDTO);
         Driver driver = new Driver(driverDTO);
         return driverRepository.save(driver);
     }
