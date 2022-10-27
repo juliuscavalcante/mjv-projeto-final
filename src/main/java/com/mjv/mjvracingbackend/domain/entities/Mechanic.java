@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.mjv.mjvracingbackend.domain.enums.Profile;
 import javax.persistence.*;
 import java.io.Serial;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,9 +23,8 @@ public class Mechanic extends Person {
         addProfile(Profile.USER);
     }
 
-    public Mechanic(Long id, String name, String cpf, String email, String password) {
-        super(id, name, cpf, email, password);
-        addProfile(Profile.USER);
+    public Mechanic(Long id, String name, String cpf, String email, String password, LocalDate birthDate) {
+        super(id, name, cpf, email, password, birthDate);
     }
 
     public List<Request> getRequests() {

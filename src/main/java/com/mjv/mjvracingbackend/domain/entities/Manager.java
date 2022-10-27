@@ -4,6 +4,7 @@ import com.mjv.mjvracingbackend.domain.enums.Profile;
 
 import javax.persistence.*;
 import java.io.Serial;
+import java.time.LocalDate;
 
 @Entity
 public class Manager extends Person {
@@ -16,8 +17,7 @@ public class Manager extends Person {
         addProfile(Profile.ADMIN);
     }
 
-    public Manager(Long id, String name, String cpf, String email, String password) {
-        super(id, name, cpf, email, password);
-        addProfile(Profile.ADMIN);
+    public Manager(Long id, String name, String cpf, String email, String password, LocalDate birthDate) {
+        super(id, name, cpf, email, password, birthDate);
     }
 }

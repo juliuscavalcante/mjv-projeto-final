@@ -34,7 +34,7 @@ public class DriverDTO implements Serializable {
     protected Set<Integer> profiles = new HashSet<>();
 
     @JsonFormat(pattern = "dd/MM/yyyy")
-    protected LocalDate birthDate = LocalDate.now();
+    protected LocalDate birthDate;
 
     public DriverDTO(Driver driver) {
         this.id = driver.getId();

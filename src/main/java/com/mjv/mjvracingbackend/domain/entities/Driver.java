@@ -4,6 +4,7 @@ import com.mjv.mjvracingbackend.domain.enums.Profile;
 
 import javax.persistence.*;
 import java.io.Serial;
+import java.time.LocalDate;
 
 @Entity
 public class Driver extends Person {
@@ -16,8 +17,8 @@ public class Driver extends Person {
         addProfile(Profile.USER);
     }
 
-    public Driver(Long id, String name, String cpf, String email, String password) {
-        super(id, name, cpf, email, password);
+    public Driver(Long id, String name, String cpf, String email, String password, LocalDate birthDate) {
+        super(id, name, cpf, email, password, birthDate);
         addProfile(Profile.USER);
     }
 }
