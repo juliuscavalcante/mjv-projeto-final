@@ -1,10 +1,12 @@
-package com.mjv.mjvracingbackend.service.exception;
+package com.mjv.mjvracingbackend.service;
 
 import com.mjv.mjvracingbackend.domain.dto.ManagerDTO;
 import com.mjv.mjvracingbackend.domain.entities.Manager;
 import com.mjv.mjvracingbackend.domain.entities.Person;
 import com.mjv.mjvracingbackend.repository.ManagerRepository;
 import com.mjv.mjvracingbackend.repository.PersonRepository;
+import com.mjv.mjvracingbackend.service.exception.DataIntegrityViolationException;
+import com.mjv.mjvracingbackend.service.exception.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
