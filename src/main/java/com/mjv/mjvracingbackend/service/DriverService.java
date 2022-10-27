@@ -47,6 +47,11 @@ public class DriverService {
         return driverRepository.save(driver);
     }
 
+    public void delete(Long id) {
+        Driver driver = findById(id);
+        driverRepository.deleteById(id);
+    }
+
     private void validateCpfAndEmail(DriverDTO driverDTO) {
         Optional<Person> driverOptional = personRepository.findByCpf(driverDTO.getCpf());
         if (driverOptional.isPresent() && driverOptional.get().getId() != driverDTO.getId()) {

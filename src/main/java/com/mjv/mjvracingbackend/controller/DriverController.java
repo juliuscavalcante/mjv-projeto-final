@@ -46,4 +46,10 @@ public class DriverController {
         Driver driver = driverService.update(id, driverDTO);
         return ResponseEntity.ok().body(new DriverDTO(driver));
     }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<DriverDTO> delete(@PathVariable Long id) {
+        driverService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
 }
