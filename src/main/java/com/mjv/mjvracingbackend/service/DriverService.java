@@ -2,11 +2,14 @@ package com.mjv.mjvracingbackend.service;
 
 import com.mjv.mjvracingbackend.domain.dto.DriverDTO;
 import com.mjv.mjvracingbackend.domain.entities.Driver;
+import com.mjv.mjvracingbackend.domain.entities.Person;
 import com.mjv.mjvracingbackend.repository.DriverRepository;
 import com.mjv.mjvracingbackend.repository.PersonRepository;
+import com.mjv.mjvracingbackend.service.exception.DataIntegrityViolationException;
 import com.mjv.mjvracingbackend.service.exception.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -32,5 +35,17 @@ public class DriverService {
         driverDTO.setId(null);
         Driver driver = new Driver(driverDTO);
         return driverRepository.save(driver);
+    }
+
+    private void validateCpfAndEmail(DriverDTO driverDTO) {
+        Optional<Person> driverOptional = personRepository.findByCpf(driverDTO.getCpf());
+        if (driverOptional.isPresent() && driverOptional.get().getId() != driverDTO.getId()) {
+            throw new DataIntegrityViolationException("This CPF is already registered in our system");
+        }
+
+        driverOptional = personRepository.findByEmail(driverDTO.getEmail());
+        if (driverOptional.isPresent() && driverOptional.get().getId() != driverDTO.getId()) {
+            throw new DataIntegrityViolationException("This email is already registered in our system");
+        }
     }
 }
