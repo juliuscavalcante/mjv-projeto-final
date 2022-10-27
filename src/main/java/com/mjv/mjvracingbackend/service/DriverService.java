@@ -10,6 +10,7 @@ import com.mjv.mjvracingbackend.service.exception.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,6 +36,14 @@ public class DriverService {
         driverDTO.setId(null);
         validateCpfAndEmail(driverDTO);
         Driver driver = new Driver(driverDTO);
+        return driverRepository.save(driver);
+    }
+
+    public Driver update(Long id, @Valid DriverDTO driverDTO) {
+        driverDTO.setId(id);
+        Driver driver = findById(id);
+        validateCpfAndEmail(driverDTO);
+        driver = new Driver(driverDTO);
         return driverRepository.save(driver);
     }
 

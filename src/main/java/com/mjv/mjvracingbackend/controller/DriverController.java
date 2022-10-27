@@ -40,4 +40,10 @@ public class DriverController {
                 .path("/{id}").buildAndExpand(driver.getId()).toUri();
         return ResponseEntity.created(uri).build();
     }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<DriverDTO> update(@Valid @PathVariable Long id, @RequestBody DriverDTO driverDTO) {
+        Driver driver = driverService.update(id, driverDTO);
+        return ResponseEntity.ok().body(new DriverDTO(driver));
+    }
 }
