@@ -1,5 +1,6 @@
 package com.mjv.mjvracingbackend.service;
 
+import com.mjv.mjvracingbackend.domain.dto.DriverDTO;
 import com.mjv.mjvracingbackend.domain.entities.Driver;
 import com.mjv.mjvracingbackend.repository.DriverRepository;
 import com.mjv.mjvracingbackend.repository.PersonRepository;
@@ -25,5 +26,11 @@ public class DriverService {
     public Driver findById(Long id) {
         Optional<Driver> driverOptional = driverRepository.findById(id);
         return driverOptional.orElseThrow(() -> new ObjectNotFoundException("driver id " + id + " not found"));
+    }
+
+    public Driver create(DriverDTO driverDTO) {
+        driverDTO.setId(null);
+        Driver driver = new Driver(driverDTO);
+        return driverRepository.save(driver);
     }
 }

@@ -5,11 +5,10 @@ import com.mjv.mjvracingbackend.domain.entities.Driver;
 import com.mjv.mjvracingbackend.service.DriverService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import javax.validation.Valid;
+import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -32,5 +31,13 @@ public class DriverController {
     public ResponseEntity<DriverDTO> findById(@PathVariable Long id) {
         Driver driver = this.driverService.findById(id);
         return ResponseEntity.ok().body(new DriverDTO(driver));
+    }
+
+    @PostMapping
+    public ResponseEntity<DriverDTO> create(@Valid @RequestBody DriverDTO driverDTO) {
+        Driver driver = driverService.create(driverDTO);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
+                .path("/{id}").buildAndExpand(driver.getId()).toUri();
+        return ResponseEntity.created(uri).build();
     }
 }
