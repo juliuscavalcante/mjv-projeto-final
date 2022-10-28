@@ -19,7 +19,6 @@ public class Request implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
     private Long id;
 
     @JsonFormat(pattern = "dd/MM/yyyy")
