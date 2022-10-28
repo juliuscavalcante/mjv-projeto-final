@@ -5,10 +5,10 @@ import com.mjv.mjvracingbackend.domain.entities.Request;
 import com.mjv.mjvracingbackend.service.RequestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value = "/requests")
@@ -22,4 +22,13 @@ public class RequestController {
         Request request = requestService.findById(id);
         return ResponseEntity.ok().body(new RequestDTO(request));
     }
+
+    @GetMapping
+    public ResponseEntity<List<RequestDTO>> findAll() {
+        List<Request> requestList = requestService.findAll();
+        List<RequestDTO> requestDTOList = requestList.stream()
+                .map(request -> new RequestDTO(request)).collect(Collectors.toList());
+        return ResponseEntity.ok().body(requestDTOList);
+    }
+
 }
