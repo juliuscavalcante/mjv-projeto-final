@@ -41,4 +41,10 @@ public class RequestController {
                 .path("/{id}").buildAndExpand(request.getId()).toUri();
         return ResponseEntity.created(uri).build();
     }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<RequestDTO> update(@PathVariable Long id, @Valid @RequestBody RequestDTO requestDTO) {
+        Request request = requestService.update(id, requestDTO);
+        return ResponseEntity.ok().body(new RequestDTO(request));
+    }
 }

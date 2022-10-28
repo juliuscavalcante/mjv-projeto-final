@@ -42,6 +42,13 @@ public class RequestService {
         return requestRepository.save(newRequest(requestDTO));
     }
 
+    public Request update(Long id, @Valid RequestDTO requestDTO) {
+        requestDTO.setId(id);
+        Request request = findById(id);
+        request = newRequest(requestDTO);
+        return requestRepository.save(request);
+    }
+
     private Request newRequest(RequestDTO requestDTO) {
         Engineer engineer = engineerService.findById(requestDTO.getEngineer());
         Mechanic mechanic = mechanicService.findById(requestDTO.getMechanic());
