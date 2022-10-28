@@ -6,7 +6,10 @@ import com.mjv.mjvracingbackend.service.RequestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.validation.Valid;
+import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,4 +34,11 @@ public class RequestController {
         return ResponseEntity.ok().body(requestDTOList);
     }
 
+    @PostMapping
+    public ResponseEntity<RequestDTO> create(@Valid @RequestBody RequestDTO requestDTO) {
+        Request request = requestService.create(requestDTO);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri()
+                .path("/{id}").buildAndExpand(request.getId()).toUri();
+        return ResponseEntity.created(uri).build();
+    }
 }

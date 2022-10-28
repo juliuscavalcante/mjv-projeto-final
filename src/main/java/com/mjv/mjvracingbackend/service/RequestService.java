@@ -1,13 +1,18 @@
 package com.mjv.mjvracingbackend.service;
 
+import com.mjv.mjvracingbackend.domain.dto.RequestDTO;
+import com.mjv.mjvracingbackend.domain.entities.Engineer;
+import com.mjv.mjvracingbackend.domain.entities.Mechanic;
 import com.mjv.mjvracingbackend.domain.entities.Request;
-import com.mjv.mjvracingbackend.repository.EngineerRepository;
-import com.mjv.mjvracingbackend.repository.MechanicRepository;
+import com.mjv.mjvracingbackend.domain.enums.Priority;
+import com.mjv.mjvracingbackend.domain.enums.Status;
 import com.mjv.mjvracingbackend.repository.RequestRepository;
 import com.mjv.mjvracingbackend.service.exception.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.validation.Valid;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,10 +23,10 @@ public class RequestService {
     private RequestRepository requestRepository;
 
     @Autowired
-    private EngineerRepository engineerRepository;
+    private EngineerService engineerService;
 
     @Autowired
-    private MechanicRepository mechanicRepository;
+    private MechanicService mechanicService;
 
 
     public Request findById(Long id) {
@@ -32,5 +37,33 @@ public class RequestService {
     public List<Request> findAll() {
         return requestRepository.findAll();
     }
+
+    public Request create(@Valid RequestDTO requestDTO) {
+        return requestRepository.save(newRequest(requestDTO));
+    }
+
+    private Request newRequest(RequestDTO requestDTO) {
+        Engineer engineer = engineerService.findById(requestDTO.getEngineer());
+        Mechanic mechanic = mechanicService.findById(requestDTO.getMechanic());
+
+        Request request = new Request();
+        if (requestDTO.getId() != null ) {
+            request.setId(requestDTO.getId());
+        }
+
+        if (requestDTO.getStatus().equals(2)) {
+            request.setClosingDate(LocalDate.now());
+
+        }
+
+        request.setEngineer(engineer);
+        request.setMechanic(mechanic);
+        request.setPriority(Priority.toEnum(requestDTO.getPriority()));
+        request.setStatus(Status.toEnum(requestDTO.getStatus()));
+        request.setTitle(requestDTO.getTitle());
+        request.setNotes(requestDTO.getNotes());
+        return request;
+    }
+
 
 }
