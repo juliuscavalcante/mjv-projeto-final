@@ -1,8 +1,8 @@
-package com.mjv.mjvracingbackend.domain.dto;
+package com.mjv.mjvracingbackend.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.mjv.mjvracingbackend.domain.entities.Manager;
-import com.mjv.mjvracingbackend.domain.enums.Profile;
+import com.mjv.mjvracingbackend.model.entities.Engineer;
+import com.mjv.mjvracingbackend.model.enums.Profile;
 
 import javax.validation.constraints.NotNull;
 import java.io.Serial;
@@ -12,11 +12,10 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class ManagerDTO implements Serializable {
+public class EngineerDTO implements Serializable {
 
     @Serial
-    private static final long serialVersionUID = 5920683874020356707L;
-
+    private static final long serialVersionUID = 4574898849434189782L;
 
     protected Long id;
 
@@ -37,19 +36,19 @@ public class ManagerDTO implements Serializable {
     @JsonFormat(pattern = "dd/MM/yyyy")
     protected LocalDate birthDate;
 
-    public ManagerDTO(Manager manager) {
-        this.id = manager.getId();
-        this.name = manager.getName();
-        this.cpf = manager.getCpf();
-        this.email = manager.getEmail();
-        this.password = manager.getPassword();
-        this.profiles = manager.getProfiles().stream().map(Profile::getCode).collect(Collectors.toSet());
-        this.birthDate = manager.getBirthDate();
+    public EngineerDTO(Engineer engineer) {
+        this.id = engineer.getId();
+        this.name = engineer.getName();
+        this.cpf = engineer.getCpf();
+        this.email = engineer.getEmail();
+        this.password = engineer.getPassword();
+        this.profiles = engineer.getProfiles().stream().map(Profile::getCode).collect(Collectors.toSet());
+        this.birthDate = engineer.getBirthDate();
     }
 
-    public ManagerDTO() {
+    public EngineerDTO() {
         super();
-        addProfile(Profile.ADMIN);
+        addProfile(Profile.USER);
     }
 
     public Long getId() {

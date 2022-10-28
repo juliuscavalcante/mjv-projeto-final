@@ -1,11 +1,11 @@
 package com.mjv.mjvracingbackend.service;
 
-import com.mjv.mjvracingbackend.domain.dto.RequestDTO;
-import com.mjv.mjvracingbackend.domain.entities.Engineer;
-import com.mjv.mjvracingbackend.domain.entities.Mechanic;
-import com.mjv.mjvracingbackend.domain.entities.Request;
-import com.mjv.mjvracingbackend.domain.enums.Priority;
-import com.mjv.mjvracingbackend.domain.enums.Status;
+import com.mjv.mjvracingbackend.model.dto.RequestDTO;
+import com.mjv.mjvracingbackend.model.entities.Engineer;
+import com.mjv.mjvracingbackend.model.entities.Mechanic;
+import com.mjv.mjvracingbackend.model.entities.Request;
+import com.mjv.mjvracingbackend.model.enums.Priority;
+import com.mjv.mjvracingbackend.model.enums.Status;
 import com.mjv.mjvracingbackend.repository.RequestRepository;
 import com.mjv.mjvracingbackend.service.exception.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;

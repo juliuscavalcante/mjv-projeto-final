@@ -1,9 +1,9 @@
 package com.mjv.mjvracingbackend.service;
 
-import com.mjv.mjvracingbackend.domain.entities.*;
-import com.mjv.mjvracingbackend.domain.enums.Priority;
-import com.mjv.mjvracingbackend.domain.enums.Profile;
-import com.mjv.mjvracingbackend.domain.enums.Status;
+import com.mjv.mjvracingbackend.model.entities.*;
+import com.mjv.mjvracingbackend.model.enums.Priority;
+import com.mjv.mjvracingbackend.model.enums.Profile;
+import com.mjv.mjvracingbackend.model.enums.Status;
 import com.mjv.mjvracingbackend.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

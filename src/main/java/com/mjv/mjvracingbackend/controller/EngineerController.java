@@ -1,7 +1,7 @@
 package com.mjv.mjvracingbackend.controller;
 
-import com.mjv.mjvracingbackend.domain.dto.EngineerDTO;
-import com.mjv.mjvracingbackend.domain.entities.Engineer;
+import com.mjv.mjvracingbackend.model.dto.EngineerDTO;
+import com.mjv.mjvracingbackend.model.entities.Engineer;
 import com.mjv.mjvracingbackend.service.EngineerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

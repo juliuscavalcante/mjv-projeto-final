@@ -1,62 +1,53 @@
-package com.mjv.mjvracingbackend.domain.entities;
+package com.mjv.mjvracingbackend.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.mjv.mjvracingbackend.domain.enums.Profile;
-import org.hibernate.validator.constraints.br.CPF;
+import com.mjv.mjvracingbackend.model.entities.Driver;
+import com.mjv.mjvracingbackend.model.enums.Profile;
 
-import javax.persistence.*;
-import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-
-@Entity
-@Table(name = "persons")
-public abstract class Person implements Serializable {
+public class DriverDTO implements Serializable {
 
     @Serial
-    private static final long serialVersionUID = -6920586080905489724L;
+    private static final long serialVersionUID = 3304047795305776058L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
 
-    protected String name;
+    @NotNull(message = "name is required")
+    protected String  name;
 
-    @Column(unique = true)
-    @CPF
+    @NotNull(message = "CPF is required")
     protected String cpf;
 
-    @Column(unique = true)
-    @Email
+    @NotNull(message = "email is required")
     protected String email;
 
+    @NotNull(message = "password is required")
     protected String password;
 
-    @ElementCollection(fetch = FetchType.EAGER)
-    @CollectionTable(name = "PROFILES")
     protected Set<Integer> profiles = new HashSet<>();
 
     @JsonFormat(pattern = "dd/MM/yyyy")
     protected LocalDate birthDate;
 
-    public Person() {
-        super();
-        addProfile(Profile.USER);
+    public DriverDTO(Driver driver) {
+        this.id = driver.getId();
+        this.name = driver.getName();
+        this.cpf = driver.getCpf();
+        this.email = driver.getEmail();
+        this.password = driver.getPassword();
+        this.profiles = driver.getProfiles().stream().map(Profile::getCode).collect(Collectors.toSet());
+        this.birthDate = driver.getBirthDate();
     }
 
-    public Person(Long id, String name, String cpf, String email, String password, LocalDate birthDate) {
-        this.id = id;
-        this.name = name;
-        this.cpf = cpf;
-        this.email = email;
-        this.password = password;
-        this.birthDate = birthDate;
+    public DriverDTO() {
+        super();
         addProfile(Profile.USER);
     }
 
@@ -104,8 +95,8 @@ public abstract class Person implements Serializable {
         return profiles.stream().map(Profile::toEnum).collect(Collectors.toSet());
     }
 
-    public void addProfile(Profile profile) {
-        this.profiles.add(profile.getCode());
+    public void addProfile(Profile profiles) {
+        this.profiles.add(profiles.getCode());
     }
 
     public LocalDate getBirthDate() {
@@ -114,18 +105,5 @@ public abstract class Person implements Serializable {
 
     public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Person person = (Person) o;
-        return Objects.equals(id, person.id) && Objects.equals(cpf, person.cpf);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, cpf);
     }
 }

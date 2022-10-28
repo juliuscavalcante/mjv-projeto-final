@@ -1,8 +1,8 @@
-package com.mjv.mjvracingbackend.domain.entities;
+package com.mjv.mjvracingbackend.model.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.mjv.mjvracingbackend.domain.enums.Priority;
-import com.mjv.mjvracingbackend.domain.enums.Status;
+import com.mjv.mjvracingbackend.model.enums.Priority;
+import com.mjv.mjvracingbackend.model.enums.Status;
 
 import javax.persistence.*;
 import java.io.Serial;

@@ -1,6 +1,6 @@
 package com.mjv.mjvracingbackend.repository;
 
-import com.mjv.mjvracingbackend.domain.entities.Person;
+import com.mjv.mjvracingbackend.model.entities.Person;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

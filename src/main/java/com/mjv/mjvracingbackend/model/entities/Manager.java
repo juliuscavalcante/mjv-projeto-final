@@ -1,7 +1,7 @@
-package com.mjv.mjvracingbackend.domain.entities;
+package com.mjv.mjvracingbackend.model.entities;
 
-import com.mjv.mjvracingbackend.domain.dto.ManagerDTO;
-import com.mjv.mjvracingbackend.domain.enums.Profile;
+import com.mjv.mjvracingbackend.model.dto.ManagerDTO;
+import com.mjv.mjvracingbackend.model.enums.Profile;
 import javax.persistence.*;
 import java.io.Serial;
 import java.time.LocalDate;

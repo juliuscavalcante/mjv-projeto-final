@@ -1,8 +1,8 @@
 package com.mjv.mjvracingbackend.service;
 
-import com.mjv.mjvracingbackend.domain.dto.MechanicDTO;
-import com.mjv.mjvracingbackend.domain.entities.Mechanic;
-import com.mjv.mjvracingbackend.domain.entities.Person;
+import com.mjv.mjvracingbackend.model.dto.MechanicDTO;
+import com.mjv.mjvracingbackend.model.entities.Mechanic;
+import com.mjv.mjvracingbackend.model.entities.Person;
 import com.mjv.mjvracingbackend.repository.MechanicRepository;
 import com.mjv.mjvracingbackend.repository.PersonRepository;
 import com.mjv.mjvracingbackend.service.exception.DataIntegrityViolationException;

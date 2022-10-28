@@ -1,4 +1,4 @@
-package com.mjv.mjvracingbackend.domain.enums;
+package com.mjv.mjvracingbackend.model.enums;
 
 public enum Priority {
 

@@ -1,8 +1,8 @@
-package com.mjv.mjvracingbackend.domain.entities;
+package com.mjv.mjvracingbackend.model.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.mjv.mjvracingbackend.domain.dto.EngineerDTO;
-import com.mjv.mjvracingbackend.domain.enums.Profile;
+import com.mjv.mjvracingbackend.model.dto.EngineerDTO;
+import com.mjv.mjvracingbackend.model.enums.Profile;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;

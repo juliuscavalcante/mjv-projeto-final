@@ -1,6 +1,6 @@
 package com.mjv.mjvracingbackend.repository;
 
-import com.mjv.mjvracingbackend.domain.entities.Engineer;
+import com.mjv.mjvracingbackend.model.entities.Engineer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
