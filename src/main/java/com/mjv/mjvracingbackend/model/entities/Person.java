@@ -17,6 +17,8 @@ import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "persons")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "job_roles")
 public abstract class Person implements Serializable {
 
     @Serial

@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Entity
+@DiscriminatorValue("Mechanic")
 public class Mechanic extends Person {
 
     @Serial

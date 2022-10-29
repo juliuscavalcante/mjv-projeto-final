@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import java.util.stream.Collectors;
 
 @Entity
+@DiscriminatorValue("Driver")
 public class Driver extends Person {
 
     @Serial

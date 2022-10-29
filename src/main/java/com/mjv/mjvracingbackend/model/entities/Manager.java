@@ -8,6 +8,7 @@ import java.time.LocalDate;
 import java.util.stream.Collectors;
 
 @Entity
+@DiscriminatorValue("Manager")
 public class Manager extends Person {
 
     @Serial

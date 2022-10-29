@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.mjv.mjvracingbackend.model.dto.EngineerDTO;
 import com.mjv.mjvracingbackend.model.enums.Profile;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import java.io.Serial;
@@ -13,6 +14,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Entity
+@DiscriminatorValue("Engineer")
 public class Engineer extends Person {
 
     @Serial
