@@ -49,6 +49,9 @@ public class EngineerService {
 
     public void delete(Long id) {
         Engineer engineer = findById(id);
+        if (engineer.getRequests().size() > 0) {
+            throw new DataIntegrityViolationException("The Engineer has one or more Service Orders, and it is not possible to delete him");
+        }
         engineerRepository.deleteById(id);
     }
 

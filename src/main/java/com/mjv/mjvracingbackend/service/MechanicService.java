@@ -48,6 +48,9 @@ public class MechanicService {
 
     public void delete(Long id) {
         Mechanic mechanic = findById(id);
+        if (mechanic.getRequests().size() > 0) {
+            throw new DataIntegrityViolationException("The Mechanic has one or more Service Orders, and it is not possible to delete him");
+        }
         mechanicRepository.deleteById(id);
     }
 
