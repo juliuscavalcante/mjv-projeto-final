@@ -28,6 +28,7 @@ public class Mechanic extends Person {
 
     public Mechanic(Long id, String name, String cpf, String email, String password, LocalDate birthDate) {
         super(id, name, cpf, email, password, birthDate);
+        addProfile(Profile.USER);
     }
 
     public Mechanic(MechanicDTO mechanicDTO) {

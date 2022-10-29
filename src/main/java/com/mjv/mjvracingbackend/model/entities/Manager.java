@@ -21,6 +21,7 @@ public class Manager extends Person {
 
     public Manager(Long id, String name, String cpf, String email, String password, LocalDate birthDate) {
         super(id, name, cpf, email, password, birthDate);
+        addProfile(Profile.ADMIN);
     }
 
     public Manager(ManagerDTO managerDTO) {

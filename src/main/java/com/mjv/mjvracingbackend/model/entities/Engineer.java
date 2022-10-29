@@ -32,6 +32,7 @@ public class Engineer extends Person {
 
     public Engineer(Long id, String name, String cpf, String email, String password, LocalDate birthDate) {
         super(id, name, cpf, email, password, birthDate);
+        addProfile(Profile.USER);
     }
 
     public Engineer(EngineerDTO engineerDTO) {
