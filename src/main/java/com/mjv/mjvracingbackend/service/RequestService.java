@@ -10,7 +10,6 @@ import com.mjv.mjvracingbackend.repository.RequestRepository;
 import com.mjv.mjvracingbackend.service.exception.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import javax.validation.Valid;
 import java.time.LocalDate;
 import java.util.List;
@@ -71,6 +70,4 @@ public class RequestService {
         request.setNotes(requestDTO.getNotes());
         return request;
     }
-
-
 }

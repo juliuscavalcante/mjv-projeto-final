@@ -2,7 +2,6 @@ package com.mjv.mjvracingbackend.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.mjv.mjvracingbackend.model.entities.Request;
-
 import javax.validation.constraints.NotNull;
 import java.io.Serial;
 import java.io.Serializable;

@@ -3,7 +3,6 @@ package com.mjv.mjvracingbackend.model.dto;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.mjv.mjvracingbackend.model.entities.Manager;
 import com.mjv.mjvracingbackend.model.enums.Profile;
-
 import javax.validation.constraints.NotNull;
 import java.io.Serial;
 import java.io.Serializable;
@@ -16,7 +15,6 @@ public class ManagerDTO implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 5920683874020356707L;
-
 
     protected Long id;
 

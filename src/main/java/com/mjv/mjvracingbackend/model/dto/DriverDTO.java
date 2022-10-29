@@ -3,7 +3,6 @@ package com.mjv.mjvracingbackend.model.dto;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.mjv.mjvracingbackend.model.entities.Driver;
 import com.mjv.mjvracingbackend.model.enums.Profile;
-
 import javax.validation.constraints.NotNull;
 import java.io.Serial;
 import java.io.Serializable;
