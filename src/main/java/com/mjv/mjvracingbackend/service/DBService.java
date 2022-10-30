@@ -6,8 +6,8 @@ import com.mjv.mjvracingbackend.model.enums.Profile;
 import com.mjv.mjvracingbackend.model.enums.Status;
 import com.mjv.mjvracingbackend.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDate;
 import java.time.Month;
 
@@ -29,22 +29,26 @@ public class DBService {
     @Autowired
     private RequestRepository requestRepository;
 
+    @Autowired
+    private BCryptPasswordEncoder encoder;
+
     public void instantiateDB() {
 
         Driver driver1 = new Driver(null, "Hamilton", "469.268.880-78", "hamilton@email.com",
-                "123", LocalDate.of(1996, Month.JANUARY,5));
+                encoder.encode("123") , LocalDate.of(1996, Month.JANUARY,5));
 
         Engineer engineer1 = new Engineer(null, "James", "341.368.720-46", "james@email.com",
-                "123", LocalDate.of(1995, Month.APRIL,23));
+                encoder.encode("123"), LocalDate.of(1995, Month.APRIL,23));
 
         Manager manager1 = new Manager(null, "Rita", "601.293.870-53", "rita@email.com",
-                "123", LocalDate.of(2001, Month.AUGUST,10));
+                encoder.encode("123"), LocalDate.of(2001, Month.AUGUST,10));
         manager1.addProfile(Profile.ADMIN);
 
         Mechanic mechanic1 = new Mechanic(null, "Lee", "817.659.510-11", "lee@email.com",
-                "123", LocalDate.of(1990, Month.JULY,15));
+                encoder.encode("123"), LocalDate.of(1990, Month.JULY,15));
 
-        Request request1 = new Request(null, Priority.MEDIUM, Status.IN_PROGRESS, "Request 01", "Test request", engineer1, mechanic1);
+        Request request1 = new Request(null, Priority.MEDIUM, Status.IN_PROGRESS, "Request 01",
+                "Test request", engineer1, mechanic1);
 
         driverRepository.save(driver1);
         engineerRepository.save(engineer1);

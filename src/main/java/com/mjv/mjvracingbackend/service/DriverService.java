@@ -8,6 +8,7 @@ import com.mjv.mjvracingbackend.repository.PersonRepository;
 import com.mjv.mjvracingbackend.service.exception.DataIntegrityViolationException;
 import com.mjv.mjvracingbackend.service.exception.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import javax.validation.Valid;
 import java.util.List;
@@ -22,6 +23,9 @@ public class DriverService {
     @Autowired
     private PersonRepository personRepository;
 
+    @Autowired
+    private BCryptPasswordEncoder encoder;
+
     public List<Driver> findAll() {
         return driverRepository.findAll();
     }
@@ -33,6 +37,7 @@ public class DriverService {
 
     public Driver create(DriverDTO driverDTO) {
         driverDTO.setId(null);
+        driverDTO.setPassword(encoder.encode(driverDTO.getPassword()));
         validateCpfAndEmail(driverDTO);
         Driver driver = new Driver(driverDTO);
         return driverRepository.save(driver);

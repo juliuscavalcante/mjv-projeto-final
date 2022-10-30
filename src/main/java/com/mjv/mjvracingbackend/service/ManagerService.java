@@ -8,6 +8,7 @@ import com.mjv.mjvracingbackend.repository.PersonRepository;
 import com.mjv.mjvracingbackend.service.exception.DataIntegrityViolationException;
 import com.mjv.mjvracingbackend.service.exception.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.validation.Valid;
@@ -23,6 +24,9 @@ public class ManagerService {
     @Autowired
     private PersonRepository personRepository;
 
+    @Autowired
+    private BCryptPasswordEncoder encoder;
+
     public List<Manager> findAll() {
         return managerRepository.findAll();
     }
@@ -34,6 +38,7 @@ public class ManagerService {
 
     public Manager create(ManagerDTO managerDTO) {
         managerDTO.setId(null);
+        managerDTO.setPassword(encoder.encode(managerDTO.getPassword()));
         validateCpfAndEmail(managerDTO);
         Manager manager = new Manager(managerDTO);
         return managerRepository.save(manager);

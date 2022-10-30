@@ -8,6 +8,7 @@ import com.mjv.mjvracingbackend.repository.PersonRepository;
 import com.mjv.mjvracingbackend.service.exception.DataIntegrityViolationException;
 import com.mjv.mjvracingbackend.service.exception.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import javax.validation.Valid;
 import java.util.List;
@@ -22,6 +23,9 @@ public class MechanicService {
     @Autowired
     private PersonRepository personRepository;
 
+    @Autowired
+    private BCryptPasswordEncoder encoder;
+
     public List<Mechanic> findAll() {
         return mechanicRepository.findAll();
     }
@@ -33,6 +37,7 @@ public class MechanicService {
 
     public Mechanic create(MechanicDTO mechanicDTO) {
         mechanicDTO.setId(null);
+        mechanicDTO.setPassword(encoder.encode(mechanicDTO.getPassword()));
         validateCpfAndEmail(mechanicDTO);
         Mechanic mechanic = new Mechanic(mechanicDTO);
         return mechanicRepository.save(mechanic);
