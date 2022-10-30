@@ -5,6 +5,7 @@ import com.mjv.mjvracingbackend.model.entities.Manager;
 import com.mjv.mjvracingbackend.service.ManagerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import javax.validation.Valid;
@@ -33,6 +34,7 @@ public class ManagerController {
         return ResponseEntity.ok().body(new ManagerDTO(manager));
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN')")
     @PostMapping
     public ResponseEntity<ManagerDTO> create(@Valid @RequestBody ManagerDTO managerDTO) {
         Manager manager = managerService.create(managerDTO);
@@ -41,12 +43,14 @@ public class ManagerController {
         return ResponseEntity.created(uri).build();
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN')")
     @PutMapping(value = "/{id}")
     public ResponseEntity<ManagerDTO> update(@Valid @PathVariable Long id, @RequestBody ManagerDTO managerDTO) {
         Manager manager = managerService.update(id, managerDTO);
         return ResponseEntity.ok().body(new ManagerDTO(manager));
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN')")
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<ManagerDTO> delete(@PathVariable Long id) {
         managerService.delete(id);

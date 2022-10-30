@@ -5,8 +5,10 @@ import com.mjv.mjvracingbackend.model.entities.Driver;
 import com.mjv.mjvracingbackend.service.DriverService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
 import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
@@ -33,6 +35,7 @@ public class DriverController {
         return ResponseEntity.ok().body(new DriverDTO(driver));
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN')")
     @PostMapping
     public ResponseEntity<DriverDTO> create(@Valid @RequestBody DriverDTO driverDTO) {
         Driver driver = driverService.create(driverDTO);
@@ -41,12 +44,14 @@ public class DriverController {
         return ResponseEntity.created(uri).build();
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN')")
     @PutMapping(value = "/{id}")
     public ResponseEntity<DriverDTO> update(@Valid @PathVariable Long id, @RequestBody DriverDTO driverDTO) {
         Driver driver = driverService.update(id, driverDTO);
         return ResponseEntity.ok().body(new DriverDTO(driver));
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN')")
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<DriverDTO> delete(@PathVariable Long id) {
         driverService.delete(id);

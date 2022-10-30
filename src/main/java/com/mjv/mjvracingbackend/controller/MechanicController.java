@@ -5,6 +5,7 @@ import com.mjv.mjvracingbackend.model.entities.Mechanic;
 import com.mjv.mjvracingbackend.service.MechanicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import javax.validation.Valid;
@@ -33,6 +34,7 @@ public class MechanicController {
         return ResponseEntity.ok().body(new MechanicDTO(mechanic));
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN')")
     @PostMapping
     public ResponseEntity<MechanicDTO> create(@Valid @RequestBody MechanicDTO mechanicDTO) {
         Mechanic mechanic = mechanicService.create(mechanicDTO);
@@ -41,12 +43,14 @@ public class MechanicController {
         return ResponseEntity.created(uri).build();
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN')")
     @PutMapping(value = "/{id}")
     public ResponseEntity<MechanicDTO> update(@Valid @PathVariable Long id, @RequestBody MechanicDTO mechanicDTO) {
         Mechanic mechanic = mechanicService.update(id, mechanicDTO);
         return ResponseEntity.ok().body(new MechanicDTO(mechanic));
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN')")
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<MechanicDTO> delete(@PathVariable Long id) {
         mechanicService.delete(id);

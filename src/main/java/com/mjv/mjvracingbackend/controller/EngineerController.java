@@ -5,6 +5,7 @@ import com.mjv.mjvracingbackend.model.entities.Engineer;
 import com.mjv.mjvracingbackend.service.EngineerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import javax.validation.Valid;
@@ -33,6 +34,7 @@ public class EngineerController {
         return ResponseEntity.ok().body(new EngineerDTO(engineer));
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN')")
     @PostMapping
     public ResponseEntity<EngineerDTO> create(@Valid @RequestBody EngineerDTO engineerDTO) {
         Engineer engineer = engineerService.create(engineerDTO);
@@ -41,12 +43,14 @@ public class EngineerController {
         return ResponseEntity.created(uri).build();
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN')")
     @PutMapping(value = "/{id}")
     public ResponseEntity<EngineerDTO> update(@Valid @PathVariable Long id, @RequestBody EngineerDTO engineerDTO) {
         Engineer engineer = engineerService.update(id, engineerDTO);
         return ResponseEntity.ok().body(new EngineerDTO(engineer));
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN')")
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<EngineerDTO> delete(@PathVariable Long id) {
         engineerService.delete(id);
