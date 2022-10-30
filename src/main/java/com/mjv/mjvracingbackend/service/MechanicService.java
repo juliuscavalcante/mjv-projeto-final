@@ -45,10 +45,12 @@ public class MechanicService {
 
     public Mechanic update(Long id, @Valid MechanicDTO mechanicDTO) {
         mechanicDTO.setId(id);
-        Mechanic mechanic = findById(id);
+        Mechanic oldMechanic = findById(id);
+        if (!mechanicDTO.getPassword().equals(oldMechanic.getPassword()))
+            mechanicDTO.setPassword(encoder.encode(mechanicDTO.getPassword()));
         validateCpfAndEmail(mechanicDTO);
-        mechanic = new Mechanic(mechanicDTO);
-        return mechanicRepository.save(mechanic);
+        oldMechanic = new Mechanic(mechanicDTO);
+        return mechanicRepository.save(oldMechanic);
     }
 
     public void delete(Long id) {

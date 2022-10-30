@@ -45,10 +45,12 @@ public class DriverService {
 
     public Driver update(Long id, @Valid DriverDTO driverDTO) {
         driverDTO.setId(id);
-        Driver driver = findById(id);
+        Driver oldDriver = findById(id);
+        if (!driverDTO.getPassword().equals(oldDriver.getPassword()))
+            driverDTO.setPassword(encoder.encode(driverDTO.getPassword()));
         validateCpfAndEmail(driverDTO);
-        driver = new Driver(driverDTO);
-        return driverRepository.save(driver);
+        oldDriver = new Driver(driverDTO);
+        return driverRepository.save(oldDriver);
     }
 
     public void delete(Long id) {

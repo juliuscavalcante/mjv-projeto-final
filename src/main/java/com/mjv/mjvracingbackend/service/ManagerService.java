@@ -46,10 +46,12 @@ public class ManagerService {
 
     public Manager update(Long id, @Valid ManagerDTO managerDTO) {
         managerDTO.setId(id);
-        Manager manager = findById(id);
+        Manager oldManager = findById(id);
+        if (!managerDTO.getPassword().equals(oldManager.getPassword()))
+            managerDTO.setPassword(encoder.encode(managerDTO.getPassword()));
         validateCpfAndEmail(managerDTO);
-        manager = new Manager(managerDTO);
-        return managerRepository.save(manager);
+        oldManager = new Manager(managerDTO);
+        return managerRepository.save(oldManager);
     }
 
     public void delete(Long id) {
