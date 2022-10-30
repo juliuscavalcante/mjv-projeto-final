@@ -10,7 +10,7 @@ public enum Profile {
 
     Profile(Integer code, String description) {
         this.code = code;
-        this.description = description;
+        this.description  = description;
     }
 
     public static Profile toEnum(Integer code) {
@@ -30,15 +30,7 @@ public enum Profile {
         return code;
     }
 
-    public void setCode(Integer code) {
-        this.code = code;
-    }
-
     public String getDescription() {
         return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 }
