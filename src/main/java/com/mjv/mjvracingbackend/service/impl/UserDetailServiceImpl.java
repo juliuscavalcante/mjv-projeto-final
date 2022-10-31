@@ -1,4 +1,4 @@
-package com.mjv.mjvracingbackend.service;
+package com.mjv.mjvracingbackend.service.impl;
 
 import com.mjv.mjvracingbackend.model.entities.Person;
 import com.mjv.mjvracingbackend.repository.PersonRepository;
