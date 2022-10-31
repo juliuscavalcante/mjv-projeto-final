@@ -9,7 +9,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
-
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.List;
@@ -17,6 +16,7 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
@@ -64,7 +64,20 @@ class DriverServiceTest {
     }
 
     @Test
-    void findById() {
+    void whenFindByIdReturnAnDriver() {
+        when(driverRepository.findById(anyLong())).thenReturn(driverOptional);
+
+        Driver response = driverService.findById(ID);
+
+        assertNotNull(response);
+
+        assertEquals(Driver.class, response.getClass());
+        assertEquals(ID, response.getId());
+        assertEquals(NAME, response.getName());
+        assertEquals(CPF, response.getCpf());
+        assertEquals(EMAIL, response.getEmail());
+        assertEquals(PASSWORD, response.getPassword());
+        assertEquals(BIRTH_DATE, response.getBirthDate());
     }
 
     @Test
