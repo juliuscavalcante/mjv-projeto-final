@@ -35,6 +35,16 @@ public class DriverDTO implements Serializable {
     @JsonFormat(pattern = "dd/MM/yyyy")
     protected LocalDate birthDate;
 
+    public DriverDTO() {
+        super();
+        addProfile(Profile.USER);
+    }
+
+    public DriverDTO(Long id, String name, String cpf, String email, String password, LocalDate birthDate) {
+        super();
+        addProfile(Profile.USER);
+    }
+
     public DriverDTO(Driver driver) {
         this.id = driver.getId();
         this.name = driver.getName();
@@ -44,12 +54,6 @@ public class DriverDTO implements Serializable {
         this.profiles = driver.getProfiles().stream().map(Profile::getCode).collect(Collectors.toSet());
         this.birthDate = driver.getBirthDate();
     }
-
-    public DriverDTO() {
-        super();
-        addProfile(Profile.USER);
-    }
-
     public Long getId() {
         return id;
     }
