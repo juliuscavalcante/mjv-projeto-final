@@ -3,8 +3,6 @@ package com.mjv.mjvracingbackend.service;
 import com.mjv.mjvracingbackend.model.dto.DriverDTO;
 import com.mjv.mjvracingbackend.model.entities.Driver;
 import com.mjv.mjvracingbackend.repository.DriverRepository;
-import com.mjv.mjvracingbackend.service.exception.DataIntegrityViolationException;
-import com.mjv.mjvracingbackend.service.exception.ObjectNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -78,6 +76,34 @@ class DriverServiceTest {
 
         assertNotNull(response);
 
+        assertEquals(Driver.class, response.getClass());
+        assertEquals(ID, response.getId());
+        assertEquals(NAME, response.getName());
+        assertEquals(CPF, response.getCpf());
+        assertEquals(EMAIL, response.getEmail());
+        assertEquals(PASSWORD, response.getPassword());
+        assertEquals(BIRTH_DATE, response.getBirthDate());
+    }
+
+    @Test
+    void whenFindByIdDriverThenReturnAnObjectNotFoundException() {
+        when(driverRepository.findById(anyLong())).thenThrow(new ObjectNotFoundException(OBJECT_NOT_FOUND));
+
+        try{
+            driverService.findById(ID);
+        } catch (Exception ex) {
+            assertEquals(ObjectNotFoundException.class, ex.getClass());
+            assertEquals(OBJECT_NOT_FOUND, ex.getMessage());
+        }
+    }
+
+    @Test
+    void whenCreateThenReturnSuccess() {
+        when(driverRepository.save(any())).thenReturn(driver);
+
+        Driver response = driverService.create(driverDTO);
+
+        assertNotNull(response);
         assertEquals(Driver.class, response.getClass());
         assertEquals(ID, response.getId());
         assertEquals(NAME, response.getName());
