@@ -2,7 +2,6 @@ package com.mjv.mjvracingbackend.service;
 
 import com.mjv.mjvracingbackend.model.dto.ManagerDTO;
 import com.mjv.mjvracingbackend.model.entities.Manager;
-import com.mjv.mjvracingbackend.model.entities.Person;
 import com.mjv.mjvracingbackend.repository.ManagerRepository;
 import com.mjv.mjvracingbackend.repository.PersonRepository;
 import com.mjv.mjvracingbackend.service.exception.DataIntegrityViolationException;
@@ -60,12 +59,12 @@ public class ManagerService {
     }
 
     private void validateCpfAndEmail(ManagerDTO managerDTO) {
-        Optional<Person> managerOptional = personRepository.findByCpf(managerDTO.getCpf());
+        Optional<Manager> managerOptional = managerRepository.findByCpf(managerDTO.getCpf());
         if (managerOptional.isPresent() && managerOptional.get().getId() != managerDTO.getId()) {
             throw new DataIntegrityViolationException("This CPF is already registered in our system");
         }
 
-        managerOptional = personRepository.findByEmail(managerDTO.getEmail());
+        managerOptional = managerRepository.findByEmail(managerDTO.getEmail());
         if (managerOptional.isPresent() && managerOptional.get().getId() != managerDTO.getId()) {
             throw new DataIntegrityViolationException("This email is already registered in our system");
         }

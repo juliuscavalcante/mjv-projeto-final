@@ -2,7 +2,6 @@ package com.mjv.mjvracingbackend.service;
 
 import com.mjv.mjvracingbackend.model.dto.MechanicDTO;
 import com.mjv.mjvracingbackend.model.entities.Mechanic;
-import com.mjv.mjvracingbackend.model.entities.Person;
 import com.mjv.mjvracingbackend.repository.MechanicRepository;
 import com.mjv.mjvracingbackend.repository.PersonRepository;
 import com.mjv.mjvracingbackend.service.exception.DataIntegrityViolationException;
@@ -10,6 +9,7 @@ import com.mjv.mjvracingbackend.service.exception.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
@@ -62,12 +62,12 @@ public class MechanicService {
     }
 
     private void validateCpfAndEmail(MechanicDTO mechanicDTO) {
-        Optional<Person> mechanicOptional = personRepository.findByCpf(mechanicDTO.getCpf());
+        Optional<Mechanic> mechanicOptional = mechanicRepository.findByCpf(mechanicDTO.getCpf());
         if (mechanicOptional.isPresent() && mechanicOptional.get().getId() != mechanicDTO.getId()) {
             throw new DataIntegrityViolationException("This CPF is already registered in our system");
         }
 
-        mechanicOptional = personRepository.findByEmail(mechanicDTO.getEmail());
+        mechanicOptional = mechanicRepository.findByEmail(mechanicDTO.getEmail());
         if (mechanicOptional.isPresent() && mechanicOptional.get().getId() != mechanicDTO.getId()) {
             throw new DataIntegrityViolationException("This email is already registered in our system");
         }

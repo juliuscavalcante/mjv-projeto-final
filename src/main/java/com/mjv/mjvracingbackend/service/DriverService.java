@@ -2,14 +2,13 @@ package com.mjv.mjvracingbackend.service;
 
 import com.mjv.mjvracingbackend.model.dto.DriverDTO;
 import com.mjv.mjvracingbackend.model.entities.Driver;
-import com.mjv.mjvracingbackend.model.entities.Person;
 import com.mjv.mjvracingbackend.repository.DriverRepository;
-import com.mjv.mjvracingbackend.repository.PersonRepository;
 import com.mjv.mjvracingbackend.service.exception.DataIntegrityViolationException;
 import com.mjv.mjvracingbackend.service.exception.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
@@ -19,9 +18,6 @@ public class DriverService {
 
     @Autowired
     private DriverRepository driverRepository;
-
-    @Autowired
-    private PersonRepository personRepository;
 
     @Autowired
     private BCryptPasswordEncoder encoder;
@@ -59,12 +55,12 @@ public class DriverService {
     }
 
     private void validateCpfAndEmail(DriverDTO driverDTO) {
-        Optional<Person> driverOptional = personRepository.findByCpf(driverDTO.getCpf());
+        Optional<Driver> driverOptional = driverRepository.findByCpf(driverDTO.getCpf());
         if (driverOptional.isPresent() && driverOptional.get().getId() != driverDTO.getId()) {
             throw new DataIntegrityViolationException("This CPF is already registered in our system");
         }
 
-        driverOptional = personRepository.findByEmail(driverDTO.getEmail());
+        driverOptional = driverRepository.findByEmail(driverDTO.getEmail());
         if (driverOptional.isPresent() && driverOptional.get().getId() != driverDTO.getId()) {
             throw new DataIntegrityViolationException("This email is already registered in our system");
         }

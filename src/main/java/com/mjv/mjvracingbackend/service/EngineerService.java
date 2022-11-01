@@ -2,7 +2,6 @@ package com.mjv.mjvracingbackend.service;
 
 import com.mjv.mjvracingbackend.model.dto.EngineerDTO;
 import com.mjv.mjvracingbackend.model.entities.Engineer;
-import com.mjv.mjvracingbackend.model.entities.Person;
 import com.mjv.mjvracingbackend.repository.EngineerRepository;
 import com.mjv.mjvracingbackend.repository.PersonRepository;
 import com.mjv.mjvracingbackend.service.exception.DataIntegrityViolationException;
@@ -63,12 +62,12 @@ public class EngineerService {
     }
 
     private void validateCpfAndEmail(EngineerDTO engineerDTO) {
-        Optional<Person> engineerOptional = personRepository.findByCpf(engineerDTO.getCpf());
+        Optional<Engineer> engineerOptional = engineerRepository.findByCpf(engineerDTO.getCpf());
         if (engineerOptional.isPresent() && engineerOptional.get().getId() != engineerDTO.getId()) {
             throw new DataIntegrityViolationException("This CPF is already registered in our system");
         }
 
-        engineerOptional = personRepository.findByEmail(engineerDTO.getEmail());
+        engineerOptional = engineerRepository.findByEmail(engineerDTO.getEmail());
         if (engineerOptional.isPresent() && engineerOptional.get().getId() != engineerDTO.getId()) {
             throw new DataIntegrityViolationException("This email is already registered in our system");
         }
