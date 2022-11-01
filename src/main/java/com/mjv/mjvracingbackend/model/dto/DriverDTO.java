@@ -42,6 +42,12 @@ public class DriverDTO implements Serializable {
 
     public DriverDTO(Long id, String name, String cpf, String email, String password, LocalDate birthDate) {
         super();
+        this.id = id;
+        this.name = name;
+        this.cpf = cpf;
+        this.email = email;
+        this.password = password;
+        this.birthDate = birthDate;
         addProfile(Profile.USER);
     }
 
