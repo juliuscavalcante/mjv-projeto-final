@@ -11,6 +11,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.time.LocalDate;
 import java.time.Month;
@@ -33,14 +34,17 @@ class DriverServiceTest {
     private static final LocalDate BIRTH_DATE = LocalDate.of(1996, Month.JANUARY,5);
 
     private static final String OBJECT_NOT_FOUND = "driver id not found";
-    private static final String EMAIL_ALREADY_REGISTERED = "This CPF is already registered in our system";
-    private static final String CPF_ALREADY_REGISTERED = "This email is already registered in our system";
+    private static final String EMAIL_ALREADY_REGISTERED = "This email is already registered in our system";
+    private static final String CPF_ALREADY_REGISTERED = "This CPF is already registered in our system";
 
     @InjectMocks
     private DriverService driverService;
 
     @Mock
     private DriverRepository driverRepository;
+
+    @Mock
+    private BCryptPasswordEncoder enconder;
 
     private Driver driver;
     private DriverDTO driverDTO;
