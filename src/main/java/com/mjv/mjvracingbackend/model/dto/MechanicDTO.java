@@ -36,6 +36,22 @@ public class MechanicDTO implements Serializable {
     @JsonFormat(pattern = "dd/MM/yyyy")
     protected LocalDate birthDate;
 
+    public MechanicDTO() {
+        super();
+        addProfile(Profile.USER);
+    }
+
+    public MechanicDTO(Long id, String name, String cpf, String email, String password, LocalDate birthDate) {
+        super();
+        this.id = id;
+        this.name = name;
+        this.cpf = cpf;
+        this.email = email;
+        this.password = password;
+        this.birthDate = birthDate;
+        addProfile(Profile.USER);
+    }
+
     public MechanicDTO(Mechanic mechanic) {
         this.id = mechanic.getId();
         this.name = mechanic.getName();
@@ -44,11 +60,6 @@ public class MechanicDTO implements Serializable {
         this.password = mechanic.getPassword();
         this.profiles = mechanic.getProfiles().stream().map(Profile::getCode).collect(Collectors.toSet());
         this.birthDate = mechanic.getBirthDate();
-    }
-
-    public MechanicDTO() {
-        super();
-        addProfile(Profile.USER);
     }
 
     public Long getId() {

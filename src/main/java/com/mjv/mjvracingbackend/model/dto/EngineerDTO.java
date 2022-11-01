@@ -35,6 +35,22 @@ public class EngineerDTO implements Serializable {
     @JsonFormat(pattern = "dd/MM/yyyy")
     protected LocalDate birthDate;
 
+    public EngineerDTO() {
+        super();
+        addProfile(Profile.USER);
+    }
+
+    public EngineerDTO(Long id, String name, String cpf, String email, String password, LocalDate birthDate) {
+        super();
+        this.id = id;
+        this.name = name;
+        this.cpf = cpf;
+        this.email = email;
+        this.password = password;
+        this.birthDate = birthDate;
+        addProfile(Profile.USER);
+    }
+
     public EngineerDTO(Engineer engineer) {
         this.id = engineer.getId();
         this.name = engineer.getName();
@@ -45,10 +61,6 @@ public class EngineerDTO implements Serializable {
         this.birthDate = engineer.getBirthDate();
     }
 
-    public EngineerDTO() {
-        super();
-        addProfile(Profile.USER);
-    }
 
     public Long getId() {
         return id;

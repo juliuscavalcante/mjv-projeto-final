@@ -2,6 +2,7 @@ package com.mjv.mjvracingbackend.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.mjv.mjvracingbackend.model.entities.Request;
+
 import javax.validation.constraints.NotNull;
 import java.io.Serial;
 import java.io.Serializable;
@@ -44,6 +45,21 @@ public class RequestDTO implements Serializable {
 
     public RequestDTO() {
         super();
+    }
+
+    public RequestDTO(Long id, LocalDate openingDate, LocalDate closingDate, Integer priority, Integer status,
+                      String title, String notes, Long engineer, Long mechanic, String engineerName, String mechanicrName) {
+        this.id = id;
+        this.openingDate = openingDate;
+        this.closingDate = closingDate;
+        this.priority = priority;
+        this.status = status;
+        this.title = title;
+        this.notes = notes;
+        this.engineer = engineer;
+        this.mechanic = mechanic;
+        this.engineerName = engineerName;
+        this.mechanicrName = mechanicrName;
     }
 
     public RequestDTO(Request request) {

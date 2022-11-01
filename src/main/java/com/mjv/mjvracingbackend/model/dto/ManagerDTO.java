@@ -35,6 +35,22 @@ public class ManagerDTO implements Serializable {
     @JsonFormat(pattern = "dd/MM/yyyy")
     protected LocalDate birthDate;
 
+    public ManagerDTO() {
+        super();
+        addProfile(Profile.ADMIN);
+    }
+
+    public ManagerDTO(Long id, String name, String cpf, String email, String password, LocalDate birthDate) {
+        super();
+        this.id = id;
+        this.name = name;
+        this.cpf = cpf;
+        this.email = email;
+        this.password = password;
+        this.birthDate = birthDate;
+        addProfile(Profile.ADMIN);
+    }
+
     public ManagerDTO(Manager manager) {
         this.id = manager.getId();
         this.name = manager.getName();
@@ -43,11 +59,6 @@ public class ManagerDTO implements Serializable {
         this.password = manager.getPassword();
         this.profiles = manager.getProfiles().stream().map(Profile::getCode).collect(Collectors.toSet());
         this.birthDate = manager.getBirthDate();
-    }
-
-    public ManagerDTO() {
-        super();
-        addProfile(Profile.ADMIN);
     }
 
     public Long getId() {
