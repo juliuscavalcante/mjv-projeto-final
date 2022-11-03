@@ -19,6 +19,7 @@ O Projeto MJV Racing Team Management é uma plataforma criada com intuíto de au
 - Intellij
 - Swagger
 - JUnit5
+- Mockito
 - Heroku
 - JWT
 - HTML
