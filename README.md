@@ -42,11 +42,11 @@ O Projeto MJV Racing Team Management é uma plataforma criada com intuíto de au
 
 ## Arquitetura 
 
-- Repository: coleção de objetos com a função de agir como intermédio com outra camada
-- Service: permite proteger a lógica de negócios da aplicação
+- Repository: coleção de objetos com a função de agir como intermédio com outra camada.
+- Service: permite proteger a lógica de negócios da aplicação.
 - Controller: são os responsáveis pelo processamento das requisições e gerar as respostas.
-- Security: camada de segurança com as configurações JWT Authentication/Authorization
-- Exceptions: exceptions personalizadas para poder gerar logs e mensagens de erro mais coerentes ao usuário
+- Security: camada de segurança com as configurações JWT Authentication/Authorization.
+- Exceptions: exceptions personalizadas para poder gerar logs e mensagens de erro mais coerentes ao usuário.
 
 ![image](https://user-images.githubusercontent.com/89096854/199824633-256ed329-a244-40ab-af78-4c4afdd75221.png)
 
