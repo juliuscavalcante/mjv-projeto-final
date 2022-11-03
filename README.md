@@ -111,6 +111,7 @@ Método POST para criar uma nova Ordem de Serviço
 ### Pontos de Melhoria
 
 - Correção de erros visuais
+- Correção de máscara de dados
 - Utilização de migrations
 - Deploy em outra plataforma (aws, gcp, azure)
 - Conteinerização
