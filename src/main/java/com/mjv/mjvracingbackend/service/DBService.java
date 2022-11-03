@@ -47,7 +47,7 @@ public class DBService {
         Mechanic mechanic1 = new Mechanic(null, "Lee", "817.659.510-11", "lee@email.com",
                 encoder.encode("123"), LocalDate.of(1990, Month.JULY,15));
 
-        Request request1 = new Request(null, Priority.MEDIUM, Status.IN_PROGRESS, "Request 01",
+        Request request1 = new Request(null, Priority.MEDIUM, Status.PROGRESS, "Request 01",
                 "Test request", engineer1, mechanic1);
 
         driverRepository.save(driver1);

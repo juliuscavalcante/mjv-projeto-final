@@ -3,7 +3,7 @@ package com.mjv.mjvracingbackend.model.enums;
 public enum Status {
 
     OPEN(0, "OPEN"),
-    IN_PROGRESS(1, "IN PROGRESS"),
+    PROGRESS(1, "PROGRESS"),
     CLOSED(2, "CLOSED");
 
     private Integer code;
