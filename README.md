@@ -28,21 +28,30 @@ O Projeto MJV Racing Team Management é uma plataforma criada com intuíto de au
 ## Regras de Negócio
 
 - Uma das regras de negócio do projeto, é que todos os funcionários (Driver, Engineer, Mechanic) são automaticamente cadastrados como Usuários (USER), exceto funcionários que forem Gerentes (Manager), que serão cadastrados também como Administrador (ADMIN).
+
 - Apenas os Gerentes (Managers) poderão criar, atualizar ou remover o cadastro de outro funcionário.
+
 - É possível filtrar funcionários por nome, cpf, email ou data de nascimento
+
 - Todos os funcionários possuem acesso a plataforma através de email e senha previamente cadastrados por um Gerente (Manager).
+
 - As Ordens de Serviço (Requests) podem ser criadas relacionando Engenheiros (Engineer) e Mecânicos (Mechanic).
+
 - As Ordens de Serviços (Request) possuem Status e Prioridade e é possível filtra-las através desses atributos.
+
 - As Ordens de Serviço não podem ser excluídas, apenas deverão ter seu Status alterado para Fechada (Closed)
 
 ## Arquitetura 
 
-- Repository: coleção de objetos com a função de agir como intermédio com outra camada.
-- Service: permite proteger a lógica de negócios da aplicação.
-- Controller: são os responsáveis pelo processamento das requisições e gerar as respostas.
-- Security: camada de segurança com as configurações JWT Authentication/Authorization.
-- Exceptions: exceptions personalizadas para poder gerar logs e mensagens de erro mais coerentes ao usuário.
-- DTOs: padrão de arquitetura para blindar as classes, fazendo com que os dados sejam encapsulandos para transferência.
+
+| Camada  | Definição |
+| ------------- | ------------- |
+| Repository  | Coleção de objetos com a função de agir como intermédio com outra camada. |
+| Service  | Permite proteger a lógica de negócios da aplicação.  |
+| Controller  | São os responsáveis pelo processamento das requisições e gerar as respostas. |
+| Security  | Camada de segurança com as configurações JWT Authentication/Authorization. |
+| Exceptions  | Exceptions personalizadas para poder gerar logs e mensagens de erro mais coerentes ao usuário. |
+| DTOs  | Padrão de arquitetura para blindar as classes, fazendo com que os dados sejam encapsulandos para transferência.  |
 
 ![image](https://user-images.githubusercontent.com/89096854/199824633-256ed329-a244-40ab-af78-4c4afdd75221.png)
 
