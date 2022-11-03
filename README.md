@@ -43,6 +43,7 @@ O Projeto MJV Racing Team Management é uma plataforma criada com intuíto de au
 
 ## Arquitetura 
 
+![image](https://user-images.githubusercontent.com/89096854/199824633-256ed329-a244-40ab-af78-4c4afdd75221.png)
 
 | Camada  | Definição |
 | ------------- | ------------- |
@@ -52,8 +53,6 @@ O Projeto MJV Racing Team Management é uma plataforma criada com intuíto de au
 | Security  | Camada de segurança com as configurações JWT Authentication/Authorization. |
 | Exceptions  | Exceptions personalizadas para poder gerar logs e mensagens de erro mais coerentes ao usuário. |
 | DTOs  | Padrão de arquitetura para blindar as classes, fazendo com que os dados sejam encapsulandos para transferência.  |
-
-![image](https://user-images.githubusercontent.com/89096854/199824633-256ed329-a244-40ab-af78-4c4afdd75221.png)
 
 ### Estratégia Single Table 
 Foi utilizada essa estratégia para o Mapeamento das entidades, desse modo todas as entidades da estrutura de herança são mapeadas em uma única tabela. 
