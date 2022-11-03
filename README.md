@@ -91,8 +91,6 @@ Método POST para criar uma nova Ordem de Serviço
 }
 ```
 
-### Pontos importantes
-
 ### Pontos de Melhoria
 
 - Correção de erros visuais
