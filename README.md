@@ -48,9 +48,9 @@ O Projeto MJV Racing Team Management é uma plataforma criada com intuíto de au
 - Controller: são os responsáveis pelo processamento das requisições e gerar as respostas.
 - Security: camada de segurança com as configurações JWT Authentication/Authorization.
 - Exceptions: exceptions personalizadas para poder gerar logs e mensagens de erro mais coerentes ao usuário.
+- DTOs: padrão de arquitetura para blindar as classes, fazendo com que os dados sejam encapsulandos para transferência.
 
 ![image](https://user-images.githubusercontent.com/89096854/199824633-256ed329-a244-40ab-af78-4c4afdd75221.png)
-
 
 ### Estratégia Single Table 
 Foi utilizada essa estratégia para o Mapeamento das entidades, desse modo todas as entidades da estrutura de herança são mapeadas em uma única tabela. 
@@ -59,7 +59,6 @@ Essa abordagem torna as consultas mais eficientes e oferece melhor desempenho.
 ![image](https://user-images.githubusercontent.com/89096854/199834954-d2d45287-5f84-4a92-9b63-a311566a8205.png)
 
 ![image](https://user-images.githubusercontent.com/89096854/199834927-ffe03b6e-3b88-44ad-a467-e7d4ec6c4f24.png)
-
 
 
 ## Demonstração
