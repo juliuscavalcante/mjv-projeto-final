@@ -34,13 +34,13 @@ public class DBService {
 
     public void instantiateDB() {
 
-        Driver driver1 = new Driver(null, "Hamilton", "469.268.880-78", "hamilton@email.com",
+        Driver driver1 = new Driver(null, "Lewis Hamilton", "469.268.880-78", "hamilton@email.com",
                 encoder.encode("123") , LocalDate.of(1996, Month.JANUARY,5));
 
-        Engineer engineer1 = new Engineer(null, "James", "341.368.720-46", "james@email.com",
+        Engineer engineer1 = new Engineer(null, "Hannah Schmitz", "341.368.720-46", "hannah@email.com",
                 encoder.encode("123"), LocalDate.of(1995, Month.APRIL,23));
 
-        Manager manager1 = new Manager(null, "Rita", "601.293.870-53", "rita@email.com",
+        Manager manager1 = new Manager(null, "Julius", "601.293.870-53", "julius@email.com",
                 encoder.encode("123"), LocalDate.of(2001, Month.AUGUST,10));
         manager1.addProfile(Profile.ADMIN);
 
