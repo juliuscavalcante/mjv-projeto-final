@@ -62,7 +62,7 @@ Foi utilizada a estratégia de Single Table para mapeamento das entidades, desse
    <img src="https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white"/>
 </p>
 
-## Diagrama de Classes
+<h2 id="diagrama_de_classes">Diagrama de Classes</h2>
 
 <div align-itens = center>
 
@@ -70,7 +70,7 @@ Foi utilizada a estratégia de Single Table para mapeamento das entidades, desse
     <img src="https://user-images.githubusercontent.com/89096854/200203487-5720a025-bd46-4602-a2ad-a86011c71852.PNG" width=60%/>
 </p>
 
-## Regras de Negócio
+<h2 id="regras_de_negocio">Regras de Negócio</h2>
 
 - Uma das regras de negócio do projeto, é que todos os funcionários (Driver, Engineer, Mechanic) são automaticamente cadastrados como Usuários (USER), exceto funcionários que forem Gerentes (Manager), que serão cadastrados também como Administrador (ADMIN).
 
@@ -84,7 +84,7 @@ Foi utilizada a estratégia de Single Table para mapeamento das entidades, desse
 
 - As Ordens de Serviço não podem ser excluídas, apenas deverão ter seu Status alterado para Fechada (Closed)
 
-## Acesso à Aplicação
+<h2 id="acesso_a_aplicacao">Acesso à Aplicação</h2>
 
 >__Note__
 O projeto foi criado em duas pontas (backend e frontend). O backend foi hospeado no Heroku e o frontend na plataforma Vercel.
@@ -93,7 +93,7 @@ O projeto foi criado em duas pontas (backend e frontend). O backend foi hospeado
 <br> __login:__ julius@email.com
 <br> __password:__ 123
 
-## Demonstração
+<h2 id="demonstracao">Demonstração</h2>
  
  ### Video Demonstração Postman
  Video demonstração dos endpoints sendo utilizados via Postman.
@@ -156,7 +156,7 @@ Método POST para criar uma nova Ordem de Serviço
 }
 ```
  
-<h2 id="como-rodar-o-projeto">Como Rodar o Projeto</h2>
+<h2 id="como_rodar_o_projeto">Como Rodar o Projeto</h2>
 
 <h3>Instalação</h3>
 
@@ -178,7 +178,7 @@ spring.datasource.password = sua-senha
 
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://god.gw.postman.com/run-collection/21173863-dbe8440e-b00c-4fc5-a171-aac3dbb7ff4b?action=collection%2Ffork&collection-url=entityId%3D21173863-dbe8440e-b00c-4fc5-a171-aac3dbb7ff4b%26entityType%3Dcollection%26workspaceId%3D328b068a-d6a3-4ee7-ba5f-69fba036c584) </p>
  
-<h2 id="pontos-de-melhoria">Pontos de Melhoria</h2>
+<h2 id="pontos_de_melhoria">Pontos de Melhoria</h2>
 
 - [ ] Correção de erros visuais;
 - [ ] Implementação do método PATCH para alteração do STATUS das Ordens de Serviço; 
