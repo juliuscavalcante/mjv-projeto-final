@@ -89,7 +89,26 @@ O projeto foi criado em duas pontas (backend e frontend). O backend foi hospeado
 <br> __login:__ julius@email.com
 <br> __password:__ 123
  
- ### Video Demo e Screenshots
+ ### Video Demonstração Postman
+ Video demonstração dos endpoints sendo utilizados via Postman.
+ 
+ https://user-images.githubusercontent.com/89096854/200322866-fe343bd6-8071-4f48-b382-3f6ae3d7ab02.mp4
+ 
+ ### Video Demonstração Frontend
+ Video demonstração da utilização da plataforma.
+ 
+ ### Screenshoots
+ 
+ <p align="center">
+    <img src="https://user-images.githubusercontent.com/89096854/200324780-efe2a3a5-b1ce-4cc1-ad69-92c42fb8e940.PNG" width=90%/>
+    <img src="https://user-images.githubusercontent.com/89096854/200324785-bc0c9d28-d4d0-4b59-97b7-61ae3ebe0ef1.PNG" width=90%/>
+    <img src="https://user-images.githubusercontent.com/89096854/200328742-8cdb0352-6f3f-4dd9-a74c-3cea06b02a28.PNG" width=30%/>
+    <img src="https://user-images.githubusercontent.com/89096854/200328448-5948b969-2f43-48a2-8160-077ebc77abb1.PNG" width=30%/>
+    <img src="https://user-images.githubusercontent.com/89096854/200328918-56e04b0b-241a-4311-a16b-52b9129b996c.PNG" width=30%/>
+</p>
+
+ 
+https://user-images.githubusercontent.com/89096854/200322899-b25f4303-5c4a-4f92-91fc-de8ce17cf61a.mp4
 
 ### Endpoints 
  
@@ -131,9 +150,6 @@ Método POST para criar uma nova Ordem de Serviço
     "mechanic": int
 }
 ```
-
-### Como Rodar o projeto
- ...
  
 ### Pontos de Melhoria
 
