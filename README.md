@@ -1,4 +1,4 @@
-<img src="https://img.shields.io/badge/STATUS-EM DESENVOLVIMENTO-yellow"/>
+<img src="https://img.shields.io/badge/STATUS-CONCLUÍDO-green"/>
 
 <p align="center">
  <img src="https://user-images.githubusercontent.com/89096854/200204007-be5a94b9-a319-4704-819e-b10ef2bc7a91.svg" width=20%>
