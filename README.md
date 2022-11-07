@@ -8,7 +8,6 @@
 
 <h2>Sumário</h2>
 <ul>
- <li><a href="#objetivo">Objetivo</a></li> 
  <li><a href="#sobre-o-projeto">Sobre o Projeto</a></li>
  <li><a href="#tecnologias-utilizadas">Tecnologias Utilizadas</a></li>
  <li><a href="#demonstracao">Demonstração</a></li> 
@@ -17,15 +16,24 @@
  <li><a href="#pontos-de-melhoria">Pontos de Melhoria</a></li> 
 </ul>
 
-# MJV Racing Team Management 🏁
-
 ## Introdução
 
 Projeto final desenvolvido para MJV School Java. Para criação desse projeto foi considerado um contexto hipotético, o tema do projeto foi escolhido mediante a um dos requisitos propostos, no qual era o desenvolvimento de API relacionada a categoria de Esportes.
 
-## Conceituação
+## Sobre o Projeto
 
-O Projeto MJV Racing Team Management é uma plataforma criada com intuíto de auxiliar uma equipe de Formula 1. A aplicação permite o cadastramento, leitura, atualização e remoção de funcionários, assim como a criação ordens de serviços internas entre a equipe.
+O Projeto MJV Racing Team Management trata-se de uma API REST, uma plataforma para gerenciamento de funcionários e criação de ordens de serviços internas de uma equipe de Fórmula 1. A aplicação possui uma estrutura de CRUD com os principais métodos HTTP (GET/PUT/UPDATE/DELETE).
+
+O sistema foi desenvolvido em Java e Spring com as configurações realizadas com Spring Boot, as entidades foram mapeadas utilizando Spring Data Jpa e Hibernate e os dados foram persistidos no Banco de Dados PostgresSQL.
+
+Para gerenciamento de dependências foi utilizado o Maven, e na parte de segurança foram feitas as configurações com o Spring Security para Autenticação/Autorização de tokens via JWT.
+
+Além do mais, foi usado o Design Pattern MVC, empregando o uso da camada de Repository com a função de agir como intermédio entre outras camadas, o Service para proteger a lógica de negócios da aplicação, os Controllers com a responsabilidade de processar as requisições e gerar as respostas, inclusive, também foi utilizado o padrão de arquitetura de DTOs (Data Transfer Objects), para aumentar a segurança das classes na transferência de dados. Além disso, foram criadas Exceptions personalizadas para gerar logs, e mensagens de erros mais coerentes ao usuário.
+
+Os Testes unitários na camada de Service foram realizados mediante, JUnit, Mockito e Spring MockMVC.
+
+No Frontend as tecnologias utilizadas foram Angular com TypeScript, no qual foram criados componentes visuais a partir do Angular Material.
+
 
 <h2 id="tecnologias-utilizadas">Tecnologias Utilizadas:</h2>
 
@@ -53,49 +61,40 @@ O Projeto MJV Racing Team Management é uma plataforma criada com intuíto de au
 
 - Uma das regras de negócio do projeto, é que todos os funcionários (Driver, Engineer, Mechanic) são automaticamente cadastrados como Usuários (USER), exceto funcionários que forem Gerentes (Manager), que serão cadastrados também como Administrador (ADMIN).
 
-- Apenas os Gerentes (Managers) poderão criar, atualizar ou remover o cadastro de outro funcionário.
+- Apenas os Gerentes poderão criar, atualizar ou remover o cadastro de outro funcionário.
 
-- É possível filtrar funcionários por nome, cpf, email ou data de nascimento
+- Todos os funcionários possuem acesso a plataforma através de email e senha previamente cadastrados por um Gerente.
 
-- Todos os funcionários possuem acesso a plataforma através de email e senha previamente cadastrados por um Gerente (Manager).
+- As Ordens de Serviço (Requests) podem ser criadas relacionando Engenheiros e Mecânicos.
 
-- As Ordens de Serviço (Requests) podem ser criadas relacionando Engenheiros (Engineer) e Mecânicos (Mechanic).
-
-- As Ordens de Serviços (Request) possuem Status e Prioridade e é possível filtra-las através desses atributos.
+- As Ordens de Serviços possuem Status e Prioridade e é possível filtra-las através desses atributos.
 
 - As Ordens de Serviço não podem ser excluídas, apenas deverão ter seu Status alterado para Fechada (Closed)
 
-## Arquitetura 
-
-![image](https://user-images.githubusercontent.com/89096854/199824633-256ed329-a244-40ab-af78-4c4afdd75221.png)
-
-| Camada  | Definição |
-| ------------- | ------------- |
-| Repository  | Coleção de objetos com a função de agir como intermédio com outra camada. |
-| Service  | Permite proteger a lógica de negócios da aplicação.  |
-| Controller  | São os responsáveis pelo processamento das requisições e gerar as respostas. |
-| Security  | Camada de segurança com as configurações JWT Authentication/Authorization. |
-| Exceptions  | Exceptions personalizadas para poder gerar logs e mensagens de erro mais coerentes ao usuário. |
-| DTOs  | Padrão de arquitetura para blindar as classes, fazendo com que os dados sejam encapsulandos para transferência.  |
-
 ### Estratégia Single Table 
-Foi utilizada a estratégia de Single Table para mapeamento das entidades, desse modo todas as entidades da estrutura de herança são mapeadas em uma única tabela. Essa abordagem torna as consultas mais eficientes e oferece melhor desempenho. Quando é feita a persistência dessa forma, o Hibernate precisa determinar a classe de cada entidade, essa informação é armazenada em uma coluna discriminadora (que não é um atributo de entidade). Essa coluna vem com nome por padrão de Dtype, porém com a anotação __@DiscriminatorColumn__ essa coluna foi alterada para “job_roles”. 
+Foi utilizada a estratégia de Single Table para mapeamento das entidades, desse modo todas as entidades da estrutura de herança são mapeadas em uma única tabela. Essa abordagem torna as consultas mais eficientes e oferece melhor desempenho. Quando é feita a persistência dessa forma, o Hibernate precisa determinar a classe de cada entidade, essa informação é armazenada em uma coluna discriminadora (que não é um atributo de entidade). Essa coluna vem com nome por padrão de Dtype, porém com a anotação __@DiscriminatorColumn__ essa coluna foi alterada para __“job_roles”.__
 
 ![image](https://user-images.githubusercontent.com/89096854/199834954-d2d45287-5f84-4a92-9b63-a311566a8205.png)
-
+ 
+- Exemplo: 
 ![image](https://user-images.githubusercontent.com/89096854/199834927-ffe03b6e-3b88-44ad-a467-e7d4ec6c4f24.png)
 
 
 ## Demonstração
 
-O projeto foi feito em duas pontas (backend e frontend) o backend foi hospeado no Heroku e o frontend na plataforma Vercel.
+>__Note__
+O projeto foi criado em duas pontas (backend e frontend). O backend foi hospeado no Heroku e o frontend na plataforma Vercel.
+<br><br>__Repositório Frontend:__ https://github.com/juliuscavalcante/mjv-projeto-final-front
+<br><br>__Link da Aplicação:__ [https://mjv-racing.vercel.app/login](https://mjv-racing.vercel.app/login)
+<br> __login:__ julius@email.com
+<br> __password:__ 123
+ 
+ ### Video Demo e Screenshots
 
-Repositório Frontend: https://github.com/juliuscavalcante/mjv-projeto-final-front
-
-Link da Aplicação: [https://mjv-racing.vercel.app/login](https://mjv-racing.vercel.app/login)
-
-### Endpoint /drivers
-
+### Endpoints 
+ 
+#### /driver /engineer /mechanic /manager
+ 
 Método POST para criar um novo(a) Driver/Engineer/Mechanic/Manager
 
 - cpf e email precisam estar no formato correto
@@ -112,7 +111,7 @@ Método POST para criar um novo(a) Driver/Engineer/Mechanic/Manager
 }
 ```
 
-### Endpoint /requests
+#### /requests
 
 Método POST para criar uma nova Ordem de Serviço
 
@@ -133,9 +132,13 @@ Método POST para criar uma nova Ordem de Serviço
 }
 ```
 
+### Como Rodar o projeto
+ ...
+ 
 ### Pontos de Melhoria
 
 - [ ] Correção de erros visuais;
+- [ ] Implementação do método PATCH para alteração do STATUS das Ordens de Serviço; 
 - [ ] Correção de máscara de dados;
 - [ ] Migrations para criação de tabelas e popular Database (Flyway);
 - [ ] Deploy em outra plataforma (AWS ou GCP ou Azure);
