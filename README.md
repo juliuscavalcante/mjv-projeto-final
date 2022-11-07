@@ -8,19 +8,24 @@
 
 <h2>Sumário</h2>
 <ul>
- <li><a href="#sobre-o-projeto">Sobre o Projeto</a></li>
- <li><a href="#tecnologias-utilizadas">Tecnologias Utilizadas</a></li>
+ <li><a href="#introducao">Introdução</a></li>
+ <li><a href="#sobre_o_projeto">Sobre o Projeto</a></li>
+ <li><a href="#tecnologias_utilizadas">Tecnologias Utilizadas</a></li>
+ <li><a href="#diagrama_de_classes">Diagrama de Classes</a></li>
+ <li><a href="#regras_de_negocio">Regras de Negócio</a></li>
+ <li><a href="#acesso_a_aplicacao">Acesso à Aplicação</a></li>
  <li><a href="#demonstracao">Demonstração</a></li> 
- <li><a href="#screenshots">Screenshots</a></li> 
- <li><a href="#como-rodar-o-projeto">Como Rodar o Projeto</a></li>
- <li><a href="#pontos-de-melhoria">Pontos de Melhoria</a></li> 
+ <li><a href="#screenshots">Screenshots</a></li>
+ <li><a href="#endpoints">Endpoints</a></li> 
+ <li><a href="#como_rodar_o_projeto">Como Rodar o Projeto</a></li>
+ <li><a href="#pontos_de_melhoria">Pontos de Melhoria</a></li> 
 </ul>
 
-## Introdução
+<h2 id="introducao">Introdução</h2>
 
 Projeto final desenvolvido para MJV School Java. Para criação desse projeto foi considerado um contexto hipotético, o tema do projeto foi escolhido mediante a um dos requisitos propostos, no qual era o desenvolvimento de API relacionada a categoria de Esportes.
 
-## Sobre o Projeto
+<h2 id="sobre_o_projeto">Sobre o Projeto</h2>
 
 O Projeto MJV Racing Team Management trata-se de uma API REST, uma plataforma para gerenciamento de funcionários e criação de ordens de serviços internas de uma equipe de Fórmula 1. A aplicação possui uma estrutura de CRUD com os principais métodos HTTP (GET/PUT/UPDATE/DELETE).
 
@@ -34,8 +39,16 @@ Os Testes unitários na camada de Service foram realizados mediante, JUnit, Mock
 
 No Frontend as tecnologias utilizadas foram Angular com TypeScript, no qual foram criados componentes visuais a partir do Angular Material.
 
+### Estratégia Single Table 
+Foi utilizada a estratégia de Single Table para mapeamento das entidades, desse modo todas as entidades da estrutura de herança são mapeadas em uma única tabela. Essa abordagem torna as consultas mais eficientes e oferece melhor desempenho. Quando é feita a persistência dessa forma, o Hibernate precisa determinar a classe de cada entidade, essa informação é armazenada em uma coluna discriminadora (que não é um atributo de entidade). Essa coluna vem com nome por padrão de Dtype, porém com a anotação __@DiscriminatorColumn__ essa coluna foi alterada para __“job_roles”.__
 
-<h2 id="tecnologias-utilizadas">Tecnologias Utilizadas:</h2>
+![image](https://user-images.githubusercontent.com/89096854/199834954-d2d45287-5f84-4a92-9b63-a311566a8205.png)
+ 
+- Exemplo: 
+![image](https://user-images.githubusercontent.com/89096854/199834927-ffe03b6e-3b88-44ad-a467-e7d4ec6c4f24.png)
+
+
+<h2 id="tecnologias_utilizadas">Tecnologias Utilizadas</h2>
 
 <p>
    <img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white"/>
@@ -71,16 +84,7 @@ No Frontend as tecnologias utilizadas foram Angular com TypeScript, no qual fora
 
 - As Ordens de Serviço não podem ser excluídas, apenas deverão ter seu Status alterado para Fechada (Closed)
 
-### Estratégia Single Table 
-Foi utilizada a estratégia de Single Table para mapeamento das entidades, desse modo todas as entidades da estrutura de herança são mapeadas em uma única tabela. Essa abordagem torna as consultas mais eficientes e oferece melhor desempenho. Quando é feita a persistência dessa forma, o Hibernate precisa determinar a classe de cada entidade, essa informação é armazenada em uma coluna discriminadora (que não é um atributo de entidade). Essa coluna vem com nome por padrão de Dtype, porém com a anotação __@DiscriminatorColumn__ essa coluna foi alterada para __“job_roles”.__
-
-![image](https://user-images.githubusercontent.com/89096854/199834954-d2d45287-5f84-4a92-9b63-a311566a8205.png)
- 
-- Exemplo: 
-![image](https://user-images.githubusercontent.com/89096854/199834927-ffe03b6e-3b88-44ad-a467-e7d4ec6c4f24.png)
-
-
-## Demonstração
+## Acesso à Aplicação
 
 >__Note__
 O projeto foi criado em duas pontas (backend e frontend). O backend foi hospeado no Heroku e o frontend na plataforma Vercel.
@@ -88,6 +92,8 @@ O projeto foi criado em duas pontas (backend e frontend). O backend foi hospeado
 <br><br>__Link da Aplicação:__ [https://mjv-racing.vercel.app/login](https://mjv-racing.vercel.app/login)
 <br> __login:__ julius@email.com
 <br> __password:__ 123
+
+## Demonstração
  
  ### Video Demonstração Postman
  Video demonstração dos endpoints sendo utilizados via Postman.
@@ -168,9 +174,11 @@ spring.datasource.password = sua-senha
  
 <h3>Execução</h3>
 
-<p>Para executar os endpoints através do Postman, utilize esta Collection: </p>
+<p>Para executar os endpoints através do Postman, utilize esta Collection: 
+
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://god.gw.postman.com/run-collection/21173863-dbe8440e-b00c-4fc5-a171-aac3dbb7ff4b?action=collection%2Ffork&collection-url=entityId%3D21173863-dbe8440e-b00c-4fc5-a171-aac3dbb7ff4b%26entityType%3Dcollection%26workspaceId%3D328b068a-d6a3-4ee7-ba5f-69fba036c584) </p>
  
-## Pontos de Melhoria
+<h2 id="pontos-de-melhoria">Pontos de Melhoria</h2>
 
 - [ ] Correção de erros visuais;
 - [ ] Implementação do método PATCH para alteração do STATUS das Ordens de Serviço; 
