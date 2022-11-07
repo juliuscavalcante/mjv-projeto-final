@@ -97,7 +97,9 @@ O projeto foi criado em duas pontas (backend e frontend). O backend foi hospeado
  ### Video Demonstração Frontend
  Video demonstração da utilização da plataforma.
  
- ### Screenshoots
+ https://user-images.githubusercontent.com/89096854/200322899-b25f4303-5c4a-4f92-91fc-de8ce17cf61a.mp4
+ 
+ <h2 id="screenshots">Screenshots</h2>
  
  <p align="center">
     <img src="https://user-images.githubusercontent.com/89096854/200324780-efe2a3a5-b1ce-4cc1-ad69-92c42fb8e940.PNG" width=90%/>
@@ -107,10 +109,7 @@ O projeto foi criado em duas pontas (backend e frontend). O backend foi hospeado
     <img src="https://user-images.githubusercontent.com/89096854/200328918-56e04b0b-241a-4311-a16b-52b9129b996c.PNG" width=30%/>
 </p>
 
- 
-https://user-images.githubusercontent.com/89096854/200322899-b25f4303-5c4a-4f92-91fc-de8ce17cf61a.mp4
-
-### Endpoints 
+## Endpoints 
  
 #### /driver /engineer /mechanic /manager
  
@@ -151,7 +150,27 @@ Método POST para criar uma nova Ordem de Serviço
 }
 ```
  
-### Pontos de Melhoria
+<h2 id="como-rodar-o-projeto">Como Rodar o Projeto</h2>
+
+<h3>Instalação</h3>
+
+<p>O projeto é gerenciado pelo Maven, então para usa-lo basta importa-lo para uma IDE. </p>
+
+<h3>Configurações do banco de dados</h3>
+
+<p>Você pode criar um banco de dados PostgreSQL com o nome o nome de sua preferência, porém é necessario adequar o projeto de acordo com as suas configurações. Para isso abra o arquivo application.properties.dev, localizado em src/main/resources/application.properties.dev e altere os seguintes comandos ao arquivo:</p>
+
+```
+spring.datasource.url = jdbc:postgresql://localhost:5432/nome-do-seu-banco-de-dados
+spring.datasource.username = seu-usuario
+spring.datasource.password = sua-senha
+```
+ 
+<h3>Execução</h3>
+
+<p>Para executar os endpoints através do Postman, utilize esta Collection: </p>
+ 
+## Pontos de Melhoria
 
 - [ ] Correção de erros visuais;
 - [ ] Implementação do método PATCH para alteração do STATUS das Ordens de Serviço; 
