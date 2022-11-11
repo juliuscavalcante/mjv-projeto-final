@@ -185,7 +185,5 @@ spring.datasource.password = sua-senha
 - [ ] Correção de máscara de dados;
 - [ ] Migrations para criação de tabelas e popular Database (Flyway);
 - [ ] Deploy em outra plataforma (AWS ou GCP ou Azure);
-- [ ] Conteinerização (Kubernetes ou Docker);
-- [ ] Serviço de Mensageria (Kafka ou RabbitMQ);
 - [ ] Testes de integração na camada Controller;
 
